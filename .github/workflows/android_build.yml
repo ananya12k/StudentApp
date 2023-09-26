@@ -1,0 +1,24 @@
+name: Student App Workflow
+
+on:
+  push:
+    branches:
+      - main # Change this to your main branch name
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21' # You can choose your desired Java version
+
+      - name: Build and Test
+        run: |
+          .\gradlew.bat build
+          .\gradlew.bat test
